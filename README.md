@@ -1,3 +1,8 @@
+> ⚠️ **This repository has moved to [accessibility-suite](https://github.com/mcp-tool-shop/accessibility-suite)**
+> Source now lives at: `examples/a11y-demo-site/`
+
+---
+
 # a11y-demo-site
 
 A tiny end-to-end demo showing:
