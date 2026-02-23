@@ -1,53 +1,57 @@
-> ⚠️ **This repository has moved to [accessibility-suite](https://github.com/mcp-tool-shop/accessibility-suite)**
-> Source now lives at: `examples/a11y-demo-site/`
+# A11y Demo Site
+
+<p align="center">
+    <em>Automated Accessibility Compliance & Provenance</em>
+</p>
+
+<p align="center">
+  <a href="https://mcp-tool-shop-org.github.io/a11y-demo-site/">
+    <strong>View Landing Page</strong>
+  </a>
+</p>
 
 ---
 
-# a11y-demo-site
+This repository demonstrates a **verified accessibility pipeline**. It shows how to use `a11y-evidence-engine` to scan for issues and `a11y-assist` to ingest, verify, and report on them.
 
-A tiny end-to-end demo showing:
+**Key Features:**
 
-- `a11y-evidence-engine` produces accessibility findings + provenance bundles
-- `a11y-assist ingest` generates fix-oriented advisories
-- `--verify-provenance` recomputes SHA-256 over canonical evidence
-- CI fails on accessibility errors **with Provenance: VERIFIED**
+*   **Evidence Generation**: Scans HTML for accessibility violations.
+*   **Cryptographic Provenance**: Signs evidence bundles to ensure they haven't been tampered with.
+*   **Automated Advisories**: Converts findings into fix-oriented guidance.
+*   **CI/CD Integration**: Demonstrates how to block builds on regressions (or warn on findings).
 
----
+## Quick Start
 
-## One-command run (local)
+### Prerequisites
 
-**Prereqs:**
-- `npm install -g a11y-evidence-engine`
-- `pip install a11y-assist`
+*   Node.js 20+
+*   Python 3.10+
+*   `npm install -g a11y-evidence-engine`
+*   `pip install a11y-assist`
 
-**Run:**
+### Run Locally
 
 ```bash
 ./scripts/a11y.sh
 ```
 
-**Outputs:**
+This will:
+1.  Scan the `html/` directory.
+2.  Generate findings in `results/`.
+3.  Ingest findings and verify provenance.
+4.  Output a summary to the console.
 
-```
-results/
-├── findings.json
-├── provenance/...
-└── a11y-assist/
-    ├── ingest-summary.json
-    └── advisories.json
-```
+## Project Structure
 
----
+*   `html/`: The web content being scanned (contains intentional accessibility errors).
+*   `scripts/`: Automation scripts for running the pipeline.
+*   `.github/workflows`: CI configurations.
 
-## CI behavior
+## License
 
-GitHub Actions runs the same script and fails if any findings exist at/above `--fail-on error`.
+MIT
 
-When provenance verification succeeds, logs include:
-
-```
-Provenance: VERIFIED
-```
 
 ---
 

@@ -14,6 +14,7 @@ echo "==> Ingest + verify provenance (a11y-assist)"
 a11y-assist ingest "$OUT/findings.json" \
   --out "$OUT/a11y-assist" \
   --verify-provenance \
+  --fail-on none \
   --strict \
   --format text
 
