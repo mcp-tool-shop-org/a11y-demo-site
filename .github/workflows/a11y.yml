@@ -25,7 +25,7 @@ jobs:
       - name: Install tools
         run: |
           npm install -g a11y-evidence-engine
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip setuptools wheel
           python -m pip install git+https://github.com/mcp-tool-shop-org/a11y-assist.git
 
       - name: Run end-to-end scan + ingest (strict + verify)
