@@ -3,7 +3,21 @@ name: A11y (upload results)
 on:
   workflow_dispatch:
   push:
+    branches: [main]
+    paths:
+      - "html/**"
+      - "scripts/**"
+      - ".github/workflows/**"
   pull_request:
+    branches: [main]
+    paths:
+      - "html/**"
+      - "scripts/**"
+      - ".github/workflows/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   a11y:
@@ -29,8 +43,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install a11y-assist
 
-      # Run, but do not stop the workflow on exit code 2 (expected for broken demo).
-      # Still fail for engine/validation failures (exit 3) or unexpected errors.
       - name: Run scan + ingest (strict + verify)
         id: run_a11y
         shell: bash
@@ -38,7 +50,6 @@ jobs:
           set -euo pipefail
           chmod +x scripts/a11y.sh
 
-          # Run and capture exit code without letting "set -e" kill the step.
           set +e
           ./scripts/a11y.sh results
           code=$?
@@ -46,16 +57,11 @@ jobs:
 
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
 
-          # exit code meanings:
-          # 0 = success, no findings >= fail-on threshold
-          # 2 = success, but findings exist (expected for this demo)
-          # 3 = ingest/validation failure (should fail workflow)
           if [ "$code" -eq 3 ]; then
             echo "A11y pipeline failed (exit 3)."
             exit 3
           fi
 
-          # For 0 or 2, continue so artifacts upload.
           exit 0
 
       - name: Upload results artifact
@@ -67,8 +73,6 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-      # Now apply the "real" pass/fail status for the demo:
-      # fail the job if findings exist (exit code 2), pass if 0.
       - name: Enforce fail-on threshold
         shell: bash
         run: |

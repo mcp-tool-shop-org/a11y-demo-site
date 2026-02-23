@@ -11,6 +11,9 @@
     <strong>View Landing Page</strong>
   </a>
 </p>
+<p align="center">
+  <a href="https://github.com/mcp-tool-shop-org/a11y-demo-site/actions/workflows/a11y-artifacts.yml"><img src="https://github.com/mcp-tool-shop-org/a11y-demo-site/actions/workflows/a11y-artifacts.yml/badge.svg" alt="A11y"></a>
+</p>
 
 ---
 
@@ -155,9 +158,9 @@ To make CI pass, fix the HTML:
 
 | Repo | Description |
 |------|-------------|
-| [prov-spec](https://github.com/mcp-tool-shop/prov-spec) | Formal provenance specification |
-| [a11y-evidence-engine](https://github.com/mcp-tool-shop/a11y-evidence-engine) | Accessibility scanner with provenance |
-| [a11y-assist](https://github.com/mcp-tool-shop/a11y-assist) | Fix advisor with provenance verification |
+| [prov-spec](https://github.com/mcp-tool-shop-org/prov-spec) | Formal provenance specification |
+| [a11y-evidence-engine](https://github.com/mcp-tool-shop-org/a11y-evidence-engine) | Accessibility scanner with provenance |
+| [a11y-assist](https://github.com/mcp-tool-shop-org/a11y-assist) | Fix advisor with provenance verification |
 
 ---
 

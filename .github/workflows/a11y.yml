@@ -2,7 +2,22 @@ name: A11y (provenance-verified)
 
 on:
   push:
+    branches: [main]
+    paths:
+      - "html/**"
+      - "scripts/**"
+      - ".github/workflows/**"
   pull_request:
+    branches: [main]
+    paths:
+      - "html/**"
+      - "scripts/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   a11y:
