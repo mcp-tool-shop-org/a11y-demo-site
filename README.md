@@ -1,4 +1,6 @@
-# A11y Demo Site
+<p align="center">
+  <img src="assets/logo.png" alt="A11y Demo Site Logo" width="200" />
+</p>
 
 <p align="center">
     <em>Automated Accessibility Compliance & Provenance</em>
