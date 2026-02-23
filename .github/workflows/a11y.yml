@@ -22,11 +22,18 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Checkout a11y-assist
+        uses: actions/checkout@v4
+        with:
+          repository: mcp-tool-shop-org/a11y-assist
+          path: a11y-assist
+          ref: main
+
       - name: Install tools
         run: |
           npm install -g a11y-evidence-engine
-          python -m pip install --upgrade pip setuptools wheel
-          python -m pip install git+https://github.com/mcp-tool-shop-org/a11y-assist.git
+          python -m pip install --upgrade pip
+          python -m pip install ./a11y-assist
 
       - name: Run end-to-end scan + ingest (strict + verify)
         run: |
