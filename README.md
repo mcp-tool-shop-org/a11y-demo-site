@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/logo.png" alt="A11y Demo Site Logo" width="200" />
+  <img src="assets/logo.png" alt="A11y Demo Site Logo" width="400" />
 </p>
 
 <p align="center">
