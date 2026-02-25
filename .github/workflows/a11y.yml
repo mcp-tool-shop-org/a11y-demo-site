@@ -6,13 +6,13 @@ on:
     paths:
       - "html/**"
       - "scripts/**"
-      - ".github/workflows/**"
+      - ".github/workflows/a11y.yml"
   pull_request:
     branches: [main]
     paths:
       - "html/**"
       - "scripts/**"
-      - ".github/workflows/**"
+      - ".github/workflows/a11y.yml"
   workflow_dispatch:
 
 concurrency:
