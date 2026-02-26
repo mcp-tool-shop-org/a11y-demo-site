@@ -3,9 +3,7 @@
 </p>
 
 <p align="center">
-  
-            <img src="https://raw.githubusercontent.com/mcp-tool-shop-org/brand/main/logos/a11y-demo-site/readme.png"
-           alt="A11y Demo Site Logo" width="200" />
+  <img src="assets/logo.png" alt="A11y Demo Site Logo" width="200" />
 </p>
 
 <p align="center">
