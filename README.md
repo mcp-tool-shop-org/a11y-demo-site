@@ -169,6 +169,31 @@ To make CI pass, fix the HTML:
 | [a11y-evidence-engine](https://github.com/mcp-tool-shop-org/a11y-evidence-engine) | Accessibility scanner with provenance |
 | [a11y-assist](https://github.com/mcp-tool-shop-org/a11y-assist) | Fix advisor with provenance verification |
 
+## Security & Data Scope
+
+| Aspect | Detail |
+|--------|--------|
+| **Data touched** | Static HTML files in `html/` (read-only), JSON results in `results/` (write) |
+| **Data NOT touched** | No user data, no credentials, no databases, no external services |
+| **Permissions** | Read: `html/` directory. Write: `results/` directory (scan output only) |
+| **Network** | None at runtime — CI downloads dependencies during setup only |
+| **Telemetry** | None collected or sent |
+
+See [SECURITY.md](SECURITY.md) for vulnerability reporting and provenance verification details.
+
+## Scorecard
+
+| Category | Score |
+|----------|-------|
+| A. Security | 10 |
+| B. Error Handling | 10 |
+| C. Operator Docs | 10 |
+| D. Shipping Hygiene | 10 |
+| E. Identity (soft) | 10 |
+| **Overall** | **50/50** |
+
+> Full audit: [SHIP_GATE.md](SHIP_GATE.md) · [SCORECARD.md](SCORECARD.md)
+
 ---
 
 ## License
