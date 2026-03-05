@@ -14,7 +14,7 @@ export const config: SiteConfig = {
     headlineAccent: 'Verified accessibility pipeline.',
     description: 'See how a11y-evidence-engine and a11y-assist work together — scan HTML for violations, sign evidence with cryptographic provenance, and generate fix-oriented advisories.',
     primaryCta: { href: '#quick-start', label: 'Get started' },
-    secondaryCta: { href: '#pipeline', label: 'How it works' },
+    secondaryCta: { href: 'handbook/', label: 'Read the Handbook' },
     previews: [
       { label: 'Scan', code: './scripts/a11y.sh' },
       { label: 'Verify', code: 'a11y-assist ingest --verify-provenance' },
