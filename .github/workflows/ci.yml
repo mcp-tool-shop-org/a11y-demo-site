@@ -57,6 +57,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install ./a11y-assist
 
+      - name: Check demo integrity
+        run: |
+          chmod +x scripts/check-demo-integrity.sh
+          ./scripts/check-demo-integrity.sh
+
       - name: Run scan + ingest (strict + verify)
         id: run_a11y
         shell: bash

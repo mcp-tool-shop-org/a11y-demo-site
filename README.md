@@ -54,6 +54,16 @@ This will:
 3.  Ingest findings and verify provenance.
 4.  Output a summary to the console.
 
+### Verify Demo Integrity
+
+The demo HTML contains intentional accessibility bugs. To confirm they haven't been accidentally fixed:
+
+```bash
+./scripts/check-demo-integrity.sh
+```
+
+This checks all 6 intentional violations across both HTML files and fails if any were removed.
+
 ## Project Structure
 
 *   `html/`: The web content being scanned (contains intentional accessibility errors).
