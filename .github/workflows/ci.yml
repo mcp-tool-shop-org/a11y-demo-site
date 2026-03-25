@@ -1,19 +1,19 @@
-name: A11y (provenance-verified)
+name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
       - "html/**"
       - "scripts/**"
-      - ".github/workflows/a11y.yml"
+      - ".github/workflows/ci.yml"
   pull_request:
     branches: [main]
     paths:
       - "html/**"
       - "scripts/**"
-      - ".github/workflows/a11y.yml"
-  workflow_dispatch:
+      - ".github/workflows/ci.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -57,7 +57,43 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install ./a11y-assist
 
-      - name: Run end-to-end scan + ingest (strict + verify)
+      - name: Run scan + ingest (strict + verify)
+        id: run_a11y
+        shell: bash
         run: |
+          set -euo pipefail
           chmod +x scripts/a11y.sh
+
+          set +e
           ./scripts/a11y.sh results
+          code=$?
+          set -e
+
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+
+          if [ "$code" -eq 3 ]; then
+            echo "A11y pipeline failed (exit 3)."
+            exit 3
+          fi
+
+          exit 0
+
+      - name: Upload results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-results
+          path: results/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Enforce fail-on threshold
+        shell: bash
+        run: |
+          code="${{ steps.run_a11y.outputs.exit_code }}"
+          echo "a11y.sh exit code: $code"
+          if [ "$code" -eq 2 ]; then
+            echo "Failing job because findings exist at/above --fail-on threshold."
+            exit 2
+          fi
+          exit 0
