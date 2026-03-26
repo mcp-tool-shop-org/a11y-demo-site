@@ -12,6 +12,7 @@ This handbook walks through the **A11y Demo Site** — a reference implementatio
 - **[Getting Started](./getting-started/)** — Prerequisites, installation, and running the pipeline locally.
 - **[The Pipeline](./pipeline/)** — The four-stage architecture: Scan, Sign, Verify, Advise.
 - **[Inspecting Results](./inspecting-results/)** — How to download and read CI artifacts from GitHub Actions.
+- **[For Beginners](./beginners/)** — New to accessibility testing? Start here.
 
 ## About this demo
 

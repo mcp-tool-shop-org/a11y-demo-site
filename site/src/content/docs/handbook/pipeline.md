@@ -49,11 +49,13 @@ a11y-demo-site/
   html/            # Intentionally broken HTML files
   scripts/         # a11y.sh — runs the full pipeline
   results/         # Generated output (gitignored)
-    a11y-evidence-engine/
-      findings.json
-      digest.json
+    findings.json
+    provenance/
+      finding-0001/
+        record.json
+        digest.json
+        envelope.json
     a11y-assist/
-      record.json
-      advisories.json
       ingest-summary.json
+      advisories.json
 ```
